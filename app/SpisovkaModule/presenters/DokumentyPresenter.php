@@ -352,6 +352,9 @@ class Spisovka_DokumentyPresenter extends BasePresenter
                 }
             }      
 
+            if (Acl::isInRole('podatelna'))
+                $this->template->AccessView = 1;
+            
             // P.L.
             if ($isVedouci)
                 if (in_array(@$dokument->prideleno->orgjednotka_id, $povoleneOrgJednotky)

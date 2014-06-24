@@ -138,7 +138,6 @@ class Spisovka_SestavyPresenter extends BasePresenter
         $this->template->Sestava = $sestava;
 
         // info
-        $this->template->rok = date('Y');
         $this->template->view = $view;
 
 
@@ -233,9 +232,9 @@ class Spisovka_SestavyPresenter extends BasePresenter
             $d_od = date("Y-m-d");
             $d_do = date("Y-m-d",time()+86400);
         }
-        
-        
-        $rok   = $this->getParam('rok',null);
+                
+        $rok = $this->getParam('rok', null);
+        $this->template->rok = !empty($rok) ? $rok : date('Y');
 
         // podaci denik
         if ( $sestava->id == 1 ) { // pouze na podaci denik, u jinych sestav zatim ne

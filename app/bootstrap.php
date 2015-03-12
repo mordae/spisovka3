@@ -120,6 +120,9 @@ Mail::$defaultMailer = 'ESSMailer';
 // 3b) Load database
 try {
     $db_config = Environment::getConfig('database')->toArray();
+
+    if (empty($db_config['driver']) || $db_config['driver'] == 'mysql')
+        $db_config['driver'] = 'mysqli';
     
     // oprava chybne konfigurace na hostingu
     // profiler je bez DEBUG modu k nicemu, jen plytva pameti (memory leak)

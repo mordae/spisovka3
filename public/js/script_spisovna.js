@@ -15,7 +15,7 @@ $(function() {
     
     $('#frmnovyForm-dokument_text').autocomplete({
         minLength: 3,
-        source: (is_simple==1)?baseUri + '?presenter=Spisovna%3Adokumenty&action=seznamAjax':baseUri + 'spisovna/dokumenty/0/seznamAjax',
+        source: (is_simple==1)?baseUri + '?presenter=Spisovna%3Azapujcky&action=seznamAjax':baseUri + 'spisovna/zapujcky/0/seznamAjax',
 	focus: function(event, ui) {
             $('#frmnovyForm-dokument_text').val(ui.item.nazev);
             return false;

@@ -93,6 +93,7 @@ $session->setSavePath($session_dir);
 
 $cookie_path = str_replace('index.php', '', $_SERVER['PHP_SELF']);
 $session->setCookieParams($cookie_path);
+$session->start();
 
 // Step 3: Configure application
 $application = Environment::getApplication();

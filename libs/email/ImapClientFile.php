@@ -606,7 +606,6 @@ class ImapClientFile {
 
         $tmp->source = $message;
 
-
         return $tmp;
         
     }
@@ -618,7 +617,12 @@ class ImapClientFile {
         }
         foreach ($address as $item) {
             $tmp = new stdClass();
-            $tmp->personal = (isset($item['name']))?$this->decode_header($item['name']):"";
+            $tmp->personal = "";
+            if (isset($item['name'])) {
+                $tmp->personal = $item['name'];
+                if (isset($item['encoding']))
+                    $tmp->personal = @iconv($item['encoding'], $this->_charset, $item['name']);
+            }
             $tmp->email = @$item['address'];
             if(!empty($tmp->personal)) {
                 $tmp->string = $tmp->personal ." <". $tmp->email .">";

@@ -1213,7 +1213,7 @@ filtrSestavy = function (elm) {
 
         baseUri = baseUri.replace('/public','');
         if ( is_simple == 1 ) {
-            var url = baseUri + '?presenter=Spisovka%3Asestavy&id=0&action=filtr&url='+elm.href;
+            var url = baseUri + '?presenter=Spisovka%3ASestavy&id=0&action=filtr&url='+encodeURIComponent(elm.href);
         } else {         
             var url = baseUri + 'sestavy/0/filtr/?url='+elm.href;
         }
@@ -1230,7 +1230,7 @@ filtrSestavy = function (elm) {
 
 zobrazSestavu = function (elm) {
 
-    var param = '?';
+    var param = is_simple ? '&' : '?';
     if ( elm.pc_od.value != '' ) {param = param + 'pc_od=' + elm.pc_od.value + '&'}
     if ( elm.pc_do.value != '' ) {param = param + 'pc_do=' + elm.pc_do.value + '&'}
     if ( elm.d_od.value != '' )  {param = param + 'd_od=' + elm.d_od.value + '&'}
